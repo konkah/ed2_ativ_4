@@ -13,6 +13,8 @@ class Hash {
   void print();
  private:
   int getHash(Aluno aluno);
+  // adicionado para calcular passo em caso de colisão
+  int getHashCollision(Aluno aluno);
   int   max_items;
   int   length;
   Aluno* structure;

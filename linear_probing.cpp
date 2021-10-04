@@ -24,12 +24,18 @@ void Hash::retrieveItem(Aluno& aluno, bool& found) {
   int startLoc = getHash(aluno);
   bool moreToSearch = true; 
   int location = startLoc;
+
+  // calcular quanto adiciona em caso de colisao
+  int collision;
+  collision = getHashCollision(aluno);
+
   do {
     if (structure[location].getRa() == aluno.getRa() ||
 	structure[location].getRa() == -1)
       moreToSearch = false;
     else
-      location = (location + 1) % max_items;
+      // adiciona o que foi calculado ao inves de "1"
+      location = (location + collision) % max_items;
   } while (location != startLoc && moreToSearch);
   
   found = (structure[location].getRa() == aluno.getRa() );   
@@ -41,8 +47,14 @@ void Hash::retrieveItem(Aluno& aluno, bool& found) {
 void Hash::insertItem(Aluno aluno) {
   int location;
   location = getHash(aluno);
+
+  // calcular quanto adiciona em caso de colisao
+  int collision;
+  collision = getHashCollision(aluno);
+
   while (structure[location].getRa() > 0)
-    location = (location + 1) % max_items;
+    // adiciona o que foi calculado ao inves de "1"
+    location = (location + collision) % max_items;
   structure[location] = aluno;
   length++;
 }
@@ -51,12 +63,18 @@ void Hash::deleteItem(Aluno aluno) {
   int startLoc = getHash(aluno);
   bool moreToSearch = true; 
   int location = startLoc;
+
+  // calcular quanto adiciona em caso de colisao
+  int collision;
+  collision = getHashCollision(aluno);
+
   do {
     if (structure[location].getRa() == aluno.getRa() ||
 	structure[location].getRa() == -1)
       moreToSearch = false;
     else
-      location = (location + 1) % max_items;
+      // adiciona o que foi calculado ao inves de "1"
+      location = (location + collision) % max_items;
   } while (location != startLoc && moreToSearch);
 
   if (structure[location].getRa() == aluno.getRa()) {       
@@ -75,3 +93,6 @@ int Hash::getHash(Aluno aluno){
   return aluno.getRa() % max_items;
 }
 
+int Hash::getHashCollision(Aluno aluno) {
+    return 7 - aluno.getRa() % 7;
+}
