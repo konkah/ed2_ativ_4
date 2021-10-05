@@ -17,18 +17,30 @@ int main(){
     Aluno aluno = Aluno(ras[i], nomes[i]);
     alunosHash.insertItem(aluno);
   }
+
+  // ja estava aqui: imprime todas as pessoas da Hash
   alunosHash.print();  
+
   cout << "------------------------------" <<  endl;
 
-  // alterado numero a ser removido
+  // alterado numero: virou 19, como pedido no exercicio
   Aluno aluno(19,"");  
+
+  // ja estava aqui: pega o aluno da Hash
   bool     found = false;
   alunosHash.retrieveItem(aluno, found);
+
+  // ja estava aqui: imprime o aluno que foi pego
   cout << aluno.getNome() << " -> " << found << endl;
   
   cout << "------------------------------" <<  endl;
 
+  // ja estava aqui: remove o aluno que foi pego
   alunosHash.deleteItem(aluno);
+
+  // ja estava aqui: imprime todas as pessoas da Hash de novo,
+  // agora sem o aluno removido
   alunosHash.print();
+
   cout << "Fim" << endl;  
 }

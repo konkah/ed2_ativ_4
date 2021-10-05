@@ -1,5 +1,6 @@
 #include "aluno.h"
 
+// Estrutura da classe para fazer a Hash
 class Hash {
  public:
   Hash(int max_items = 100);
@@ -13,7 +14,7 @@ class Hash {
   void print();
  private:
   int getHash(Aluno aluno);
-  // adicionado para calcular passo em caso de colisão
+  // adicionado para calcular em caso de colisao
   int getHashCollision(Aluno aluno);
   int   max_items;
   int   length;

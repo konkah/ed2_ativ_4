@@ -1,5 +1,6 @@
 #include "aluno.h"
 
+// classe para armazenar cada Aluno
 Aluno::Aluno(){
   this->ra   = -1;
   this->nome = "";

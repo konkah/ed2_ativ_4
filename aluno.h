@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// Estrutura da classe para armazenar cada Aluno
 class Aluno{
 private :
   int         ra;
